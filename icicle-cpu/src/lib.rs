@@ -8,7 +8,7 @@ pub mod utils;
 
 mod config;
 mod exit;
-mod regs;
+pub mod regs;
 mod trace;
 
 use std::any::Any;
