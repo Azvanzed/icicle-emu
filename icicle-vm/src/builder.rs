@@ -1,7 +1,7 @@
 use std::path::Path;
 
 use icicle_cpu::{cpu::CallCov, exec::helpers, lifter, Arch, Config, Cpu};
-pub use sleigh_compile::ldef::SleighLanguage;
+use sleigh_compile::ldef::SleighLanguage;
 
 use crate::Vm;
 
