@@ -7,6 +7,7 @@ edition = "2021"
 icicle-cpu = { path = "../icicle-cpu" }
 icicle-linux = { path = "../icicle-linux" }
 icicle-jit = { path = "../icicle-jit" }
+sleigh_compile = { path = "../sleigh/sleigh-compile" }
 anyhow = { workspace = true }
 pcode = { workspace = true }
 sleigh-runtime = { workspace = true }
