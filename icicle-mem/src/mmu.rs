@@ -477,6 +477,8 @@ impl Mmu {
         let physical = &mut self.physical;
         let tlb = &mut self.tlb;
         let mut partially_unmapped = false;
+        let mut free_index = None;
+        
         let _ = self.mapping.overlapping_mut::<_, ()>(start..=end, |start, len, entry| {
             tracing::trace!("unmap: ({:#0x}, {:#0x}): {:0x?}", start, len, entry);
             match entry.take() {
@@ -495,6 +497,8 @@ impl Mmu {
 
                     let offset = PageData::offset(start);
                     page.data_mut().perm[offset..offset + len as usize].fill(perm::NONE);
+
+                    free_index = Some(inner.index);
                 }
                 Some(_) => {}
 
@@ -504,6 +508,10 @@ impl Mmu {
 
             Ok(())
         });
+
+        if let Some(index) = free_index {
+            physical.free(index);
+        }
 
         !partially_unmapped
     }
