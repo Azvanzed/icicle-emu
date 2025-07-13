@@ -161,7 +161,7 @@ pub struct Mmu {
     write_hooks: HookStore<dyn WriteHook>,
 
     /// The underlying physical memory.
-    physical: physical::PhysicalMemory,
+    pub physical: physical::PhysicalMemory,
 
     /// The parent snapshot for the MMU.
     parent_state: Snapshot,
