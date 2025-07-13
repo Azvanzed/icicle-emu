@@ -114,7 +114,6 @@ impl PhysicalMemory {
         true
     }
 
-    #[allow(unused)] // @fixme: This should be called when we unmap pages
     pub fn free(&mut self, index: Index) {
         self.free.push(index);
     }
